@@ -10,5 +10,5 @@ export default function Home() {
   const day = String(now.getDate()).padStart(2, "0");
   const todayParam = `${month}${day}`;
 
-  redirect(`/surprise?date=${todayParam}&name=친구`);
+  redirect(`/surprise?date=${todayParam}&name=${encodeURIComponent("친구")}`);
 }
