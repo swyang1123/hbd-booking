@@ -314,6 +314,53 @@ function SurpriseContent() {
             </p>
           </div>
         </div>
+
+        {/* 팔로우 유도 트리거 섹션 — Glassmorphism · 비밀 확인 CTA */}
+        <section
+          className="w-full max-w-[min(100%,360px)] mx-auto mt-8 rounded-2xl overflow-hidden text-center"
+          style={{
+            background: "rgba(88, 28, 135, 0.35)",
+            backdropFilter: "blur(10px)",
+            WebkitBackdropFilter: "blur(10px)",
+            border: "1px solid rgba(255, 255, 255, 0.25)",
+            boxShadow: "0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)",
+          }}
+        >
+          <div className="px-8 py-10 flex flex-col items-center justify-center space-y-6">
+            <h2
+              className="font-serif text-xl md:text-2xl font-medium italic leading-snug max-w-[320px] mx-auto"
+              style={{
+                color: "rgba(255, 255, 255, 0.98)",
+                letterSpacing: "0.06em",
+              }}
+            >
+              당신을 예약한 사람은 누구일까요?
+            </h2>
+            <p
+              className="text-[13px] leading-relaxed max-w-[300px] mx-auto"
+              style={{
+                color: "rgba(226, 232, 240, 0.9)",
+                letterSpacing: "0.02em",
+              }}
+            >
+              궁금하면 <span className="font-semibold text-white">@hbd_.365</span> 팔로우하고 DM으로 <span className="font-semibold text-white">[추측]</span>을 보내보세요!
+            </p>
+            <a
+              href="https://www.instagram.com/hbd_.365/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center px-8 py-4 rounded-xl font-semibold text-sm tracking-[0.12em] transition-all hover:opacity-90 active:scale-[0.98]"
+              style={{
+                color: "rgba(255, 255, 255, 0.95)",
+                background: "transparent",
+                border: "1.5px solid rgba(255, 255, 255, 0.5)",
+                boxShadow: "inset 0 1px 0 rgba(255, 255, 255, 0.15)",
+              }}
+            >
+              비밀 확인하러 가기
+            </a>
+          </div>
+        </section>
       </div>
     </div>
   );
