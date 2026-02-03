@@ -239,11 +239,12 @@ function SurpriseContent() {
                     </div>
                   </div>
                   <div className="flex flex-col items-center text-center gap-1.5">
-                    <div className="w-14 h-14 rounded-xl overflow-hidden shrink-0 flex items-center justify-center" style={{ backgroundColor: "rgba(255,255,255,0.05)" }}>
+                    <div className="w-14 h-14 shrink-0 flex items-center justify-center" style={{ backgroundColor: "transparent" }}>
                       <img
                         src={data.birthstoneImage || ""}
                         alt={data.birthstoneName || "Birth stone"}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-contain"
+                        style={{ objectFit: "contain", mixBlendMode: "multiply", backgroundColor: "transparent" }}
                         crossOrigin="anonymous"
                         onError={(e) => {
                           e.currentTarget.style.display = "none";
@@ -294,30 +295,9 @@ function SurpriseContent() {
           </div>
         </div>
 
-        {/* 저장 버튼 — 캡처 제외, 생일 카드 본문만 저장되도록 ref 밖에 배치 */}
-        <button
-          type="button"
-          onClick={handleSaveImage}
-          className="w-full max-w-[min(100%,360px)] mx-auto flex items-center justify-center gap-2 py-4 px-6 rounded-2xl
-                     bg-white/10 border border-white/20 text-white font-semibold text-sm tracking-wide
-                     hover:bg-white/20 hover:border-white/30 active:scale-[0.98] transition-all shadow-lg shadow-black/20"
-        >
-          <span className="opacity-90">🎂</span>
-          내 생일 저장하기
-        </button>
-
-        {/* 브랜딩 — 고급스럽게 배치 (캡처 제외) */}
-        <div className="flex justify-center pt-4">
-          <div className="px-8 py-3.5 rounded-full border border-white/15 bg-white/5 backdrop-blur-sm">
-            <p className="text-[11px] text-white/80 tracking-[0.35em] uppercase font-semibold">
-              Daily birthday project <span className="tracking-normal text-white/90">@hbd_.365</span>
-            </p>
-          </div>
-        </div>
-
-        {/* 팔로우 유도 트리거 섹션 — Glassmorphism · 비밀 확인 CTA */}
+        {/* [중간] 당신을 예약한 사람은 누구일까요? — 순서 격상 (카드 바로 아래) */}
         <section
-          className="w-full max-w-[min(100%,360px)] mx-auto mt-8 rounded-2xl overflow-hidden text-center"
+          className="w-full max-w-[min(100%,360px)] mx-auto rounded-2xl overflow-hidden text-center"
           style={{
             background: "rgba(88, 28, 135, 0.35)",
             backdropFilter: "blur(10px)",
@@ -361,6 +341,27 @@ function SurpriseContent() {
             </a>
           </div>
         </section>
+
+        {/* [하단] 내 생일 저장하기 버튼 섹션 */}
+        <button
+          type="button"
+          onClick={handleSaveImage}
+          className="w-full max-w-[min(100%,360px)] mx-auto flex items-center justify-center gap-2 py-4 px-6 rounded-2xl
+                     bg-white/10 border border-white/20 text-white font-semibold text-sm tracking-wide
+                     hover:bg-white/20 hover:border-white/30 active:scale-[0.98] transition-all shadow-lg shadow-black/20"
+        >
+          <span className="opacity-90">🎂</span>
+          내 생일 저장하기
+        </button>
+
+        {/* 브랜딩 — 고급스럽게 배치 (캡처 제외) */}
+        <div className="flex justify-center pt-4">
+          <div className="px-8 py-3.5 rounded-full border border-white/15 bg-white/5 backdrop-blur-sm">
+            <p className="text-[11px] text-white/80 tracking-[0.35em] uppercase font-semibold">
+              Daily birthday project <span className="tracking-normal text-white/90">@hbd_.365</span>
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );

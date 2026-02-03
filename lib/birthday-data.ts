@@ -117,6 +117,34 @@ export const birthdayDatabase: Record<string, BirthdayEntry> = {
     anniversaryName: "골든리트리버의 날",
     anniversaryDesc: "충성스럽고 따뜻한 골든리트리버처럼, 오늘은 사랑받고 사랑 주는 날입니다.",
   },
+  "02-04": {
+    title: "새로운 시작의 설렘",
+    event: "입춘",
+    meaning: "입춘의 기운처럼 타인의 시선에 구애받지 않고 스스로 빛나는 당당한 자아로 새로움을 시작하는 날입니다.",
+    colorCode: "#4C1D95",
+    vibe: 93,
+    flowerName: "빨간 앵초",
+    flowerMeaning: "돌보지 않는 아름다움이라는 꽃말처럼, 타인의 시선에 구애받지 않고 스스로 빛나는 당당한 자아의 에너지입니다.",
+    flowerImage: "/images/primrose.png",
+    birthstoneName: "바이컬러 사파이어",
+    birthstoneDesc:
+      "결합과 조화를 상징하며, 서로 다른 두 마음이 만나 하나로 어우러지는 기적 같은 연결을 담습니다.",
+    birthstoneImage: "/images/bicolor_sapphire.png",
+    zodiacName: "물병자리",
+    zodiacDetail: "자유로운 영혼",
+    zodiacImage: "/images/aquarius.png",
+    fortune: "입춘의 기운이 물병자리와 맞닿는 하루. 새로운 시작의 설렘이 생동감을 줍니다. 먼저 건넨 한마디가 좋은 인연을 부릅니다.",
+    colorNameKo: "딥 바이올렛",
+    colorDesc:
+      "딥 바이올렛은 새로움과 순수한 시작을 상징합니다. 입춘의 기운을 닮아 마음이 밝고 경쾌해지는 색입니다.",
+    energyEmoji: "🌱",
+    energyGradientFrom: "from-violet-200/70",
+    energyGradientTo: "to-rose-200/50",
+    energyDesc:
+      "입춘의 기운을 담은 '새로운 시작의 설렘'이 높은 날입니다. 겨우내 잠들었던 기운이 깨어나는 생동감을 느껴 보세요.",
+    anniversaryName: "입춘",
+    anniversaryDesc: "겨우내 잠들었던 기운이 깨어나는 날입니다.",
+  },
 };
 
 /** URL date 파라미터(MMDD)를 DB 키(MM-DD)로 변환 */
