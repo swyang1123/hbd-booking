@@ -145,6 +145,34 @@ export const birthdayDatabase: Record<string, BirthdayEntry> = {
     anniversaryName: "입춘",
     anniversaryDesc: "겨우내 잠들었던 기운이 깨어나는 날입니다.",
   },
+  "02-05": {
+    title: "예리한 직관력",
+    event: "세계 초코 퐁듀의 날",
+    meaning: "보이지 않는 곳에서도 묵묵히 뿌리 내리는 성실함과, 고정관념을 넘어서는 직관이 당신의 하루를 이끕니다.",
+    colorCode: "#6B21A8",
+    vibe: 91,
+    flowerName: "양치",
+    flowerMeaning: "성실이라는 꽃말처럼, 보이지 않는 곳에서도 묵묵히 뿌리 내리는 단단한 성실함의 에너지입니다.",
+    flowerImage: "/images/0205_flower.png",
+    birthstoneName: "플럼 플루오라이트",
+    birthstoneDesc:
+      "자유로운 사고를 상징하며, 고정관념에서 벗어나 창의적인 영감을 주는 보라빛 흐름을 담습니다.",
+    birthstoneImage: "/images/0205_stone.png",
+    zodiacName: "물병자리",
+    zodiacDetail: "자유로운 영혼",
+    zodiacImage: "/images/aquarius.png",
+    fortune: "물병자리 기운이 직관을 밝게 하는 하루. 성실한 선택이 좋은 흐름을 만듭니다. 먼저 느낀 생각을 믿어 보세요.",
+    colorNameKo: "로열 퍼플",
+    colorDesc:
+      "로열 퍼플은 고귀함과 직관을 상징합니다. 오늘 이 색을 떠올리면 창의적인 영감이 스며듭니다.",
+    energyEmoji: "✦",
+    energyGradientFrom: "from-violet-200/70",
+    energyGradientTo: "to-purple-200/50",
+    energyDesc:
+      "예리한 직관력이 높은 날입니다. 보이지 않는 곳의 신호를 읽는 데 유리한 하루예요.",
+    anniversaryName: "세계 초코 퐁듀의 날",
+    anniversaryDesc: "달콤한 초코 퐁듀처럼, 오늘은 나누는 즐거움이 빛나는 날입니다.",
+  },
 };
 
 /** URL date 파라미터(MMDD)를 DB 키(MM-DD)로 변환 */
