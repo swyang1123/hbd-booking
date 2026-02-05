@@ -244,7 +244,11 @@ function SurpriseContent() {
                         src={data.birthstoneImage || ""}
                         alt={data.birthstoneName || "Birth stone"}
                         className="w-full h-full object-contain"
-                        style={{ objectFit: "contain", mixBlendMode: "multiply", backgroundColor: "transparent" }}
+                        style={{
+                          objectFit: "contain",
+                          backgroundColor: "transparent",
+                          ...(data.birthstonePreserveColor ? {} : { mixBlendMode: "multiply" }),
+                        }}
                         crossOrigin="anonymous"
                         onError={(e) => {
                           e.currentTarget.style.display = "none";

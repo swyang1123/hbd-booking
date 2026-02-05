@@ -14,6 +14,8 @@ export type BirthdayEntry = {
   birthstoneDetail?: string;
   birthstoneDesc?: string;
   birthstoneImage?: string;
+  /** true면 탄생석 원본 색상 유지(mix-blend-mode 미적용). 그레이/블루 등 본연 톤 노출용 */
+  birthstonePreserveColor?: boolean;
 
   zodiacName?: string;
   zodiacDetail?: string;
@@ -172,6 +174,36 @@ export const birthdayDatabase: Record<string, BirthdayEntry> = {
       "예리한 직관력이 높은 날입니다. 보이지 않는 곳의 신호를 읽는 데 유리한 하루예요.",
     anniversaryName: "세계 초코 퐁듀의 날",
     anniversaryDesc: "달콤한 초코 퐁듀처럼, 오늘은 나누는 즐거움이 빛나는 날입니다.",
+  },
+  "02-06": {
+    title: "흔들리지 않는 평온",
+    event: "세계 요거트의 날",
+    meaning: "척박한 환경에서도 스스로를 지켜내는 강인한 자생력과, 어둠 속에서도 별처럼 빛나는 기품이 당신의 하루를 이끕니다.",
+    colorCode: "#6B7280",
+    vibe: 90,
+    flowerName: "바위솔",
+    flowerMeaning: "가사에 근면함이라는 꽃말처럼, 척박한 환경에서도 스스로를 지켜내는 강인한 자생력과 성실함의 에너지입니다.",
+    flowerImage: "/images/0206_flower.png",
+    birthstoneName: "스타 그레이 사파이어",
+    birthstoneDesc:
+      "고결을 상징하며, 어둠 속에서도 별처럼 빛나는 중심을 잃지 않는 기품을 담습니다.",
+    birthstoneImage: "/images/0206_stone.png",
+    birthstonePreserveColor: true,
+    zodiacName: "물병자리",
+    zodiacDetail: "자유로운 영혼",
+    zodiacImage: "/images/aquarius.png",
+    fortune:
+      "공기의 원소이자 지성과 혁신을 상징하는 물병자리의 기운이 강해지는 날입니다. 타인의 시선에 얽매이지 않고 자신만의 독창적인 세계를 구축하는 물병자리의 속성처럼, 오늘 여러분은 자유로운 영감 속에서 새로운 해답을 찾게 될 것입니다.",
+    colorNameKo: "스모키 그레이",
+    colorDesc:
+      "스모키 그레이는 차분함과 고결함을 상징합니다. 오늘 이 색을 떠올리면 마음이 흔들리지 않는 평온으로 가득해집니다.",
+    energyEmoji: "✦",
+    energyGradientFrom: "from-gray-200/70",
+    energyGradientTo: "to-slate-200/50",
+    energyDesc:
+      "흔들리지 않는 평온이 높은 날입니다. 어떤 상황에서도 중심을 잃지 않는 하루예요.",
+    anniversaryName: "세계 요거트의 날",
+    anniversaryDesc: "부드럽고 상큼한 요거트처럼, 오늘은 가벼운 기쁨이 찾아오는 날입니다.",
   },
 };
 
