@@ -239,7 +239,7 @@ function SurpriseContent() {
                     </div>
                   </div>
                   <div className="flex flex-col items-center text-center gap-1.5">
-                    <div className="w-14 h-14 shrink-0 flex items-center justify-center" style={{ backgroundColor: "transparent" }}>
+                    <div className="w-14 h-14 shrink-0 flex items-center justify-center rounded-xl overflow-hidden" style={{ backgroundColor: "transparent" }}>
                       <img
                         src={data.birthstoneImage || ""}
                         alt={data.birthstoneName || "Birth stone"}

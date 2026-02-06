@@ -205,6 +205,36 @@ export const birthdayDatabase: Record<string, BirthdayEntry> = {
     anniversaryName: "세계 요거트의 날",
     anniversaryDesc: "부드럽고 상큼한 요거트처럼, 오늘은 가벼운 기쁨이 찾아오는 날입니다.",
   },
+  "02-07": {
+    title: "진심이 닿는 우정",
+    event: "친구에게 편지 쓰는 날",
+    meaning: "수평적 관계와 우정을 소중히 여기는 물병자리의 속성이, 물망초의 꽃말과 칸카나이트의 이해력과 맞닿아 소중한 인연에게 진정성이 전해지는 날입니다.",
+    colorCode: "#38BDF8",
+    vibe: 92,
+    flowerName: "물망초",
+    flowerMeaning: "나를 잊지 마세요라는 꽃말처럼, 잊히지 않을 진정성을 담은 관계의 에너지입니다.",
+    flowerImage: "/images/0207_flower.png",
+    birthstoneName: "칸카나이트",
+    birthstoneDesc:
+      "이해력을 상징하며, 말과 문장이 상대의 마음속에 깊은 공명으로 남도록 돕는 기품을 담습니다.",
+    birthstoneImage: "/images/0207_stone.png",
+    birthstonePreserveColor: true,
+    zodiacName: "물병자리",
+    zodiacDetail: "자유로운 영혼",
+    zodiacImage: "/images/aquarius.png",
+    fortune:
+      "수평적 관계와 우정을 소중히 여기는 물병자리의 속성이 가장 따뜻하게 발현되는 날입니다. 논리적이고 객관적인 물병자리의 지성이 오늘은 '진심'이라는 도구를 만나 소중한 인연에게 닿을 거예요. 물망초의 꽃말처럼 잊히지 않을 진정성을 편지에 담아보세요. 칸카나이트의 이해력이 더해져, 당신의 문장들이 친구의 마음속에 깊은 공명으로 남는 하루가 될 것입니다.",
+    colorNameKo: "스카이 블루",
+    colorDesc:
+      "물망초를 닮은 스카이 블루는 우정과 진심을 상징합니다. 오늘 이 색을 떠올리면 소통이 따뜻해집니다.",
+    energyEmoji: "✦",
+    energyGradientFrom: "from-sky-200/70",
+    energyGradientTo: "to-indigo-200/50",
+    energyDesc:
+      "우정과 진심이 운세를 밝게 하는 날입니다. 소중한 인연에게 먼저 손길을 건네는 하루예요.",
+    anniversaryName: "친구에게 편지 쓰는 날",
+    anniversaryDesc: "소중한 인연에게 편지로 마음을 전하는 날입니다.",
+  },
 };
 
 /** URL date 파라미터(MMDD)를 DB 키(MM-DD)로 변환 */
