@@ -235,6 +235,36 @@ export const birthdayDatabase: Record<string, BirthdayEntry> = {
     anniversaryName: "친구에게 편지 쓰는 날",
     anniversaryDesc: "소중한 인연에게 편지로 마음을 전하는 날입니다.",
   },
+  "02-08": {
+    title: "웃음이 부르는 행운",
+    event: "웃음의 날",
+    meaning: "인도주의와 공동체를 중시하는 물병자리의 에너지가, 범의귀의 절실한 사랑과 루틸 쿼츠의 행운과 맞닿아 웃음으로 주변을 밝히는 날입니다.",
+    colorCode: "#F59E0B",
+    vibe: 93,
+    flowerName: "범의귀",
+    flowerMeaning: "절실한 사랑이라는 꽃말처럼, 웃음으로 주변을 따뜻하게 물들이는 진심의 에너지입니다.",
+    flowerImage: "/images/0208_flower.png",
+    birthstoneName: "루틸 쿼츠",
+    birthstoneDesc:
+      "행운을 상징하며, 금빛 바늘처럼 강력한 행운의 기운을 끌어당기는 힘을 담습니다.",
+    birthstoneImage: "/images/0208_stone.png",
+    birthstonePreserveColor: true,
+    zodiacName: "물병자리",
+    zodiacDetail: "자유로운 영혼",
+    zodiacImage: "/images/aquarius.png",
+    fortune:
+      "인도주의와 공동체를 중시하는 물병자리의 에너지가 세상을 밝게 비추는 날입니다. 지적이고 쿨한 매력을 가진 물병자리가 가장 빛날 때는 바로 활짝 웃으며 긍정의 기운을 전파할 때죠. 웃으면 복이 온다는 말처럼, 오늘 여러분의 미소는 루틸 쿼츠의 금빛 바늘처럼 행운을 강력하게 끌어당길 것입니다. 범의귀의 절실한 사랑이 담긴 웃음으로 주변을 따뜻하게 물들이는 하루가 되길 바랍니다.",
+    colorNameKo: "골드 앰버",
+    colorDesc:
+      "루틸 쿼츠를 닮은 골드 앰버는 행운과 따뜻한 긍정을 상징합니다. 오늘 이 색을 떠올리면 웃음이 번집니다.",
+    energyEmoji: "✦",
+    energyGradientFrom: "from-amber-200/70",
+    energyGradientTo: "to-yellow-200/50",
+    energyDesc:
+      "웃음과 긍정이 운세를 여는 날이에요. 활짝 웃으며 주변에 행운의 기운을 나눠 보세요.",
+    anniversaryName: "웃음의 날",
+    anniversaryDesc: "웃으면 복이 온다는 말처럼, 오늘은 미소로 행운을 부르는 날입니다.",
+  },
 };
 
 /** URL date 파라미터(MMDD)를 DB 키(MM-DD)로 변환 */
