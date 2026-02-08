@@ -265,6 +265,36 @@ export const birthdayDatabase: Record<string, BirthdayEntry> = {
     anniversaryName: "웃음의 날",
     anniversaryDesc: "웃으면 복이 온다는 말처럼, 오늘은 미소로 행운을 부르는 날입니다.",
   },
+  "02-09": {
+    title: "고요한 결단력",
+    event: "나쁜 습관 덮어내기의 날",
+    meaning: "객관적인 지성과 자유로운 시야를 가진 물병자리의 기운이, 체크 아이언의 결단력과 은매화의 평온한 사랑과 함께 당신의 내면을 명확하게 이끄는 날입니다.",
+    colorCode: "#64748B",
+    vibe: 90,
+    flowerName: "은매화",
+    flowerMeaning: "사랑의 속삭임이라는 꽃말처럼, 맑은 향기로 내면을 평온한 사랑으로 채워 주는 에너지입니다.",
+    flowerImage: "/images/0209_flower.png",
+    birthstoneName: "체크 아이언",
+    birthstoneDesc:
+      "결단력을 상징하며, 혼란 속에서도 흔들림 없이 명확한 방향을 제시하는 힘을 담습니다.",
+    birthstoneImage: "/images/0209_stone.png",
+    birthstonePreserveColor: true,
+    zodiacName: "물병자리",
+    zodiacDetail: "자유로운 영혼",
+    zodiacImage: "/images/aquarius.png",
+    fortune:
+      "객관적인 지성과 자유로운 시야를 가진 물병자리의 기운이 흐르는 날입니다. 체크 아이언이 상징하는 흔들림 없는 결단력은 혼란 속에서도 명확한 방향을 제시해주며, 은매화의 맑은 향기는 당신의 내면을 평온한 사랑으로 채워줍니다. 오늘은 복잡한 생각에서 벗어나 당신을 가장 당신답게 만드는 가치들에 집중해 보세요. 그 단단하고 맑은 에너지들이 모여, 당신이 바라는 삶을 향한 고요하지만 강력한 흐름을 만들어낼 것입니다.",
+    colorNameKo: "슬레이트 그레이",
+    colorDesc:
+      "슬레이트 그레이는 차분한 결단과 명확함을 상징합니다. 오늘 이 색을 떠올리면 방향이 선명해집니다.",
+    energyEmoji: "✦",
+    energyGradientFrom: "from-slate-200/70",
+    energyGradientTo: "to-gray-200/50",
+    energyDesc:
+      "결단력과 명확한 시야가 운세를 여는 날입니다. 당신을 당신답게 만드는 가치에 집중해 보세요.",
+    anniversaryName: "나쁜 습관 덮어내기의 날",
+    anniversaryDesc: "나쁜 습관을 내려놓고 새로운 루틴을 시작하는 날입니다.",
+  },
 };
 
 /** URL date 파라미터(MMDD)를 DB 키(MM-DD)로 변환 */
