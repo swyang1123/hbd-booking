@@ -295,6 +295,36 @@ export const birthdayDatabase: Record<string, BirthdayEntry> = {
     anniversaryName: "나쁜 습관 덮어내기의 날",
     anniversaryDesc: "나쁜 습관을 내려놓고 새로운 루틴을 시작하는 날입니다.",
   },
+  "02-10": {
+    title: "예리한 통찰력",
+    event: "테디베어의 날",
+    meaning: "지성과 인도주의를 지향하는 물병자리의 기운이, 레드 타이거 아이의 통찰력과 서향의 영광이 담긴 에너지와 맞닿는 날입니다.",
+    colorCode: "#B45309",
+    vibe: 91,
+    flowerName: "서향",
+    flowerMeaning: "영광이라는 꽃말처럼, 걸어온 길에 보이지 않는 영광의 기운을 더해 주는 에너지입니다.",
+    flowerImage: "/images/0210_flower.png",
+    birthstoneName: "레드 타이거 아이",
+    birthstoneDesc:
+      "통찰력을 상징하며, 상황의 본질을 꿰뚫어 보는 예리한 시야를 선사합니다.",
+    birthstoneImage: "/images/0210_stone.png",
+    birthstonePreserveColor: true,
+    zodiacName: "물병자리",
+    zodiacDetail: "자유로운 영혼",
+    zodiacImage: "/images/aquarius.png",
+    fortune:
+      "똑똑하고 자유로운 생각을 가진 물병자리의 기운이 가득한 날입니다. 레드 타이거 아이가 가진 예리한 눈은 당신이 복잡한 상황 속에서도 진짜 중요한 게 무엇인지 알 수 있게 도와주고, 서향의 깊은 향기는 당신이 하는 일들에 기분 좋은 성공의 기운을 더해줍니다. 오늘은 남들의 시선보다는 당신이 진짜 원하는 것이 무엇인지 스스로에게 물어보세요. 그 솔직하고 단단한 마음이 당신의 오늘을 더욱 빛나고 확실하게 만들어줄 것입니다.",
+    colorNameKo: "레드 타이거",
+    colorDesc:
+      "레드 타이거 아이를 닮은 색은 통찰과 단단한 신념을 상징합니다. 오늘 이 색을 떠올리면 본질이 선명해집니다.",
+    energyEmoji: "✦",
+    energyGradientFrom: "from-amber-200/70",
+    energyGradientTo: "to-orange-200/50",
+    energyDesc:
+      "통찰력과 내면의 목소리가 운세를 여는 날입니다. 고요한 관찰에 귀 기울여 보세요.",
+    anniversaryName: "테디베어의 날",
+    anniversaryDesc: "소중한 사람에게 따뜻한 마음을 전하는 날입니다.",
+  },
 };
 
 /** URL date 파라미터(MMDD)를 DB 키(MM-DD)로 변환 */
