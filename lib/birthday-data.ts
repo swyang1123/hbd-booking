@@ -325,6 +325,33 @@ export const birthdayDatabase: Record<string, BirthdayEntry> = {
     anniversaryName: "테디베어의 날",
     anniversaryDesc: "소중한 사람에게 따뜻한 마음을 전하는 날입니다.",
   },
+  "02-12": {
+    title: "포용과 보호의 기운",
+    event: "포옹의 날",
+    meaning: "지성과 포용력을 갖춘 물병자리의 따뜻한 기운이 흐르는 날입니다. 당신의 존재만으로도 주변에 위로가 됩니다.",
+    colorCode: "#FDE68A",
+    vibe: 92,
+    flowerName: "쥐꼬리망초",
+    flowerMeaning: "가련함 (보호하고 싶은 순수함)",
+    flowerImage: "/images/0212_flower.png",
+    birthstoneName: "옐로 자스퍼",
+    birthstoneDesc: "보호를 상징하며, 소중한 사람들을 든든하게 지켜주는 수호석입니다.",
+    birthstoneImage: "/images/0212_stone.png",
+    birthstonePreserveColor: true,
+    zodiacName: "물병자리",
+    zodiacDetail: "자유로운 영혼",
+    zodiacImage: "/images/aquarius.png",
+    fortune:
+      "지성과 포용력이 함께 흐르는 날입니다. 옐로 자스퍼의 보호가, 쥐꼬리망초의 순수함이 당신 곁에 있습니다. 가까운 이에게 따뜻한 포옹을 건네보세요.",
+    colorNameKo: "앰버 옐로",
+    colorDesc: "따뜻한 노란빛은 보호와 위로를 상징합니다. 오늘 이 색을 떠올리면 마음이 평온해집니다.",
+    energyEmoji: "✦",
+    energyGradientFrom: "from-amber-200/70",
+    energyGradientTo: "to-yellow-200/50",
+    energyDesc: "따뜻한 포옹이 주변을 감싸는 날입니다. 당신의 존재만으로도 큰 위로가 됩니다.",
+    anniversaryName: "포옹의 날",
+    anniversaryDesc: "가까운 이들에게 포옹을 나누며 마음을 전하는 날입니다.",
+  },
 };
 
 /** URL date 파라미터(MMDD)를 DB 키(MM-DD)로 변환 */
