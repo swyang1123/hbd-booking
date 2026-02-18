@@ -1,34 +1,9 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, Suspense, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import html2canvas from "html2canvas";
-
-const displayName = "친구";
-const dateKey = "02-17";
-
-const data = {
-  title: "블루 오팔의 지적인 기운과 설날의 풍요로움이 당신의 새로운 시작을 축복합니다.",
-  energyDesc:
-    "당신의 야심 찬 계획들이 모두 결실을 맺는 한 해가 될 거예요.",
-  energyEmoji: "✦",
-  anniversaryName: "설날",
-  anniversaryDesc:
-    "오늘은 민족 대명절 '설날'이야. 새해 복 많이 받으세요! 설날의 따뜻한 기운이 당신을 감싸요.",
-  flowerName: "야생화 (Wild Flower)",
-  flowerMeaning: "친숙함",
-  flowerImage: "/images/0217_flower.png",
-  birthstoneName: "블루 오팔 (Blue Opal)",
-  birthstoneDesc: "학구적인 야심",
-  birthstoneImage: "/images/0217_stone.png",
-  birthstonePreserveColor: true,
-  zodiacName: "물병자리",
-  zodiacDetail: "자유로운 영혼",
-  zodiacImage: "/images/aquarius.png",
-  fortune:
-    "오늘은 창의적인 아이디어가 샘솟는 날입니다. 설날의 기운을 받아 가족들과 즐거운 시간을 보내며 새로운 계획을 세우기에 아주 좋은 날이에요.",
-  colorNameKo: "블루 오팔",
-  colorCode: "#5DADE2",
-};
+import { birthdayDatabase, dateParamToKey } from "@/lib/birthday-data";
 
 function waitForImages(el: HTMLElement): Promise<void> {
   const imgs = el.querySelectorAll("img");
@@ -53,11 +28,20 @@ function safeFileName(name: string): string {
   return name.replace(/[/\\:*?"<>|]/g, "_").trim() || "친구";
 }
 
-export default function Home() {
+function BirthdayCardContent() {
+  const searchParams = useSearchParams();
+  const nameParam = searchParams.get("name");
+  const dateParam = searchParams.get("date");
+
+  const displayName = nameParam?.trim() || "친구";
+  const dateKey = dateParam ? dateParamToKey(dateParam) : null;
+  const data = dateKey ? birthdayDatabase[dateKey] ?? null : null;
+
+  const hasParams = Boolean(dateParam?.trim());
   const cardRef = useRef<HTMLDivElement>(null);
 
   const handleSaveImage = async () => {
-    if (!cardRef.current) return;
+    if (!cardRef.current || !data) return;
     try {
       await waitForImages(cardRef.current);
       const canvas = await html2canvas(cardRef.current, {
@@ -77,6 +61,36 @@ export default function Home() {
       console.error(e);
     }
   };
+
+  // 파라미터가 없으면 입력창 표시
+  if (!hasParams) {
+    return (
+      <InputForm
+        initialName={displayName || undefined}
+        initialDate={dateParam || undefined}
+      />
+    );
+  }
+
+  // 날짜 데이터가 없으면 안내 메시지
+  if (!data) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center px-6 bg-gradient-to-b from-indigo-950/95 via-purple-950/90 to-violet-950/95 text-white">
+        <p className="text-center text-white/90 mb-4">
+          {dateKey || dateParam}의 생일 데이터가 아직 준비되지 않았어요.
+        </p>
+        <a
+          href="/"
+          className="px-6 py-3 rounded-xl bg-white/15 border border-white/30 hover:bg-white/25 transition-colors"
+        >
+          다른 날짜로 시도하기
+        </a>
+      </div>
+    );
+  }
+
+  const anniversaryMain =
+    (data as { anniversaryMain?: string }).anniversaryMain || data.anniversaryDesc;
 
   return (
     <div className="min-h-screen py-10 px-4 bg-gradient-to-b from-indigo-950/98 via-purple-950/95 to-violet-950/98 text-white font-sans">
@@ -109,7 +123,7 @@ export default function Home() {
                 className="text-[9px] tracking-widest uppercase"
                 style={{ color: "rgba(255,255,255,0.4)" }}
               >
-                {dateKey} · 설날 특별 에디션
+                {dateKey} · Mystery Birthday Center
               </p>
             </div>
 
@@ -127,47 +141,53 @@ export default function Home() {
                   overflowWrap: "break-word",
                 }}
               >
-                {/* 설날 기념일 */}
-                <div
-                  className="rounded-xl p-4 text-center"
-                  style={{
-                    backgroundColor: "rgba(249,156,0,0.15)",
-                    border: "1px solid rgba(254,230,133,0.35)",
-                  }}
-                >
-                  <span
-                    className="text-[7px] uppercase font-bold tracking-wider block mb-1"
-                    style={{ color: "rgba(254,230,133,0.9)" }}
+                {(data.anniversaryName || data.anniversaryDesc || anniversaryMain) && (
+                  <div
+                    className="rounded-xl p-4 text-center"
+                    style={{
+                      backgroundColor: "rgba(249,156,0,0.15)",
+                      border: "1px solid rgba(254,230,133,0.35)",
+                    }}
                   >
-                    오늘의 기념일 · 설날
-                  </span>
-                  <p
-                    className="font-serif text-base font-semibold mb-1"
-                    style={{ color: "rgba(254,243,198,0.98)" }}
-                  >
-                    새해 복 많이 받으세요
-                  </p>
-                  {data.anniversaryDesc && (
-                    <p
-                      className="text-[11px] leading-relaxed"
-                      style={{ color: "rgba(255,255,255,0.8)" }}
+                    <span
+                      className="text-[7px] uppercase font-bold tracking-wider block mb-1"
+                      style={{ color: "rgba(254,230,133,0.9)" }}
                     >
-                      {data.anniversaryDesc}
-                    </p>
-                  )}
-                </div>
+                      오늘의 기념일
+                    </span>
+                    {anniversaryMain && (
+                      <p
+                        className="font-serif text-base font-semibold mb-1"
+                        style={{ color: "rgba(254,243,198,0.98)" }}
+                      >
+                        {anniversaryMain}
+                      </p>
+                    )}
+                    {data.anniversaryDesc &&
+                      anniversaryMain !== data.anniversaryDesc && (
+                        <p
+                          className="text-[11px] leading-relaxed"
+                          style={{ color: "rgba(255,255,255,0.8)" }}
+                        >
+                          {data.anniversaryDesc}
+                        </p>
+                      )}
+                  </div>
+                )}
 
-                {/* 탄생석 & 탄생화 이미지 - 카드 중앙에 배치 */}
-                <div className="flex flex-col items-center gap-4 py-2">
-                  <div className="grid grid-cols-2 gap-5 w-full max-w-[200px] mx-auto">
-                    <div className="flex flex-col items-center gap-1.5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div
+                    className="rounded-xl p-4 flex flex-col"
+                    style={{ backgroundColor: "rgba(255,255,255,0.05)" }}
+                  >
+                    <div className="flex flex-col items-center gap-2 mb-3">
                       <div
                         className="w-20 h-20 rounded-xl overflow-hidden shrink-0 flex items-center justify-center"
                         style={{ backgroundColor: "rgba(255,255,255,0.08)" }}
                       >
                         <img
                           src={data.birthstoneImage || ""}
-                          alt={data.birthstoneName}
+                          alt={data.birthstoneName || "Birth stone"}
                           className="w-full h-full object-contain"
                           crossOrigin="anonymous"
                           style={{
@@ -183,19 +203,26 @@ export default function Home() {
                         Birth Stone
                       </span>
                       <p
-                        className="font-serif text-xs italic text-center"
+                        className="font-serif text-sm italic text-center"
                         style={{ color: "rgba(255,255,255,0.95)" }}
                       >
-                        {data.birthstoneName}
+                        {data.birthstoneName || "—"}
                       </p>
+                    </div>
+                    {data.birthstoneDesc && (
                       <p
-                        className="text-[10px] text-center leading-snug"
-                        style={{ color: "rgba(255,255,255,0.7)" }}
+                        className="text-[11px] leading-relaxed flex-1"
+                        style={{ color: "rgba(255,255,255,0.78)" }}
                       >
                         {data.birthstoneDesc}
                       </p>
-                    </div>
-                    <div className="flex flex-col items-center gap-1.5">
+                    )}
+                  </div>
+                  <div
+                    className="rounded-xl p-4 flex flex-col"
+                    style={{ backgroundColor: "rgba(255,255,255,0.05)" }}
+                  >
+                    <div className="flex flex-col items-center gap-2 mb-3">
                       <div
                         className="w-20 h-20 rounded-xl overflow-hidden shrink-0 flex items-center justify-center"
                         style={{ backgroundColor: "rgba(255,255,255,0.08)" }}
@@ -214,74 +241,76 @@ export default function Home() {
                         Birth Flower
                       </span>
                       <p
-                        className="font-serif text-xs italic text-center"
+                        className="font-serif text-sm italic text-center"
                         style={{ color: "rgba(255,255,255,0.95)" }}
                       >
                         {data.flowerName}
                       </p>
+                    </div>
+                    {data.flowerMeaning && (
                       <p
-                        className="text-[10px] text-center leading-snug"
-                        style={{ color: "rgba(255,255,255,0.7)" }}
+                        className="text-[11px] leading-relaxed flex-1"
+                        style={{ color: "rgba(255,255,255,0.78)" }}
                       >
                         {data.flowerMeaning}
                       </p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* 별자리 운세 */}
-                <div
-                  className="rounded-xl p-4 space-y-3"
-                  style={{ backgroundColor: "rgba(255,255,255,0.05)" }}
-                >
-                  <div className="flex flex-col items-center justify-center gap-2 text-center">
-                    <div className="w-14 h-14 rounded-xl overflow-hidden shrink-0 flex items-center justify-center">
-                      <img
-                        src={data.zodiacImage || "/images/aquarius.png"}
-                        alt={data.zodiacName}
-                        width={56}
-                        height={56}
-                        className="block w-full h-full object-cover"
-                        crossOrigin="anonymous"
-                      />
-                    </div>
-                    {data.zodiacName && (
-                      <>
-                        <p
-                          className="font-serif text-sm italic"
-                          style={{ color: "rgba(255,255,255,0.95)" }}
-                        >
-                          {data.zodiacName}
-                        </p>
-                        {data.zodiacDetail && (
-                          <p
-                            className="text-[10px]"
-                            style={{ color: "rgba(255,255,255,0.7)" }}
-                          >
-                            {data.zodiacDetail}
-                          </p>
-                        )}
-                      </>
                     )}
                   </div>
-                  {data.fortune && (
-                    <p
-                      className="text-[12px] leading-relaxed text-center"
-                      style={{ color: "rgba(255,255,255,0.85)" }}
-                    >
-                      {data.fortune}
-                    </p>
-                  )}
                 </div>
 
-                {/* 이지 리딩 에너지 문구 */}
+                {(data.zodiacName || data.fortune) && (
+                  <div
+                    className="rounded-xl p-4 space-y-3"
+                    style={{ backgroundColor: "rgba(255,255,255,0.05)" }}
+                  >
+                    <div className="flex flex-col items-center justify-center gap-2 text-center">
+                      <div className="w-14 h-14 rounded-xl overflow-hidden shrink-0 flex items-center justify-center">
+                        <img
+                          src={data.zodiacImage || "/images/aquarius.png"}
+                          alt={data.zodiacName || "Zodiac"}
+                          width={56}
+                          height={56}
+                          className="block w-full h-full object-cover"
+                          crossOrigin="anonymous"
+                        />
+                      </div>
+                      {data.zodiacName && (
+                        <>
+                          <p
+                            className="font-serif text-sm italic"
+                            style={{ color: "rgba(255,255,255,0.95)" }}
+                          >
+                            {data.zodiacName}
+                          </p>
+                          {data.zodiacDetail && (
+                            <p
+                              className="text-[10px]"
+                              style={{ color: "rgba(255,255,255,0.7)" }}
+                            >
+                              {data.zodiacDetail}
+                            </p>
+                          )}
+                        </>
+                      )}
+                    </div>
+                    {data.fortune && (
+                      <p
+                        className="text-[12px] leading-relaxed text-center"
+                        style={{ color: "rgba(255,255,255,0.85)" }}
+                      >
+                        {data.fortune}
+                      </p>
+                    )}
+                  </div>
+                )}
+
                 <div
                   className="relative rounded-xl overflow-hidden p-4"
                   style={{
                     background:
                       "linear-gradient(to bottom right, rgba(255,204,211,0.2), rgba(184,230,254,0.2))",
-                  border: "1px solid rgba(255,255,255,0.12)",
-                }}
+                    border: "1px solid rgba(255,255,255,0.12)",
+                  }}
                 >
                   <div
                     className="absolute inset-0 backdrop-blur-[1px]"
@@ -320,7 +349,6 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* Lucky Color */}
                 <div
                   className="flex items-center justify-center gap-3 rounded-xl p-3"
                   style={{ backgroundColor: "rgba(255,255,255,0.05)" }}
@@ -367,6 +395,15 @@ export default function Home() {
         </button>
 
         <div className="flex justify-center pt-4">
+          <a
+            href="/"
+            className="text-[12px] text-white/70 hover:text-white/90 underline underline-offset-2"
+          >
+            다른 날짜로 다시 만들기
+          </a>
+        </div>
+
+        <div className="flex justify-center pt-2">
           <div className="px-8 py-3.5 rounded-full border border-white/15 bg-white/5 backdrop-blur-sm">
             <p className="text-[11px] text-white/80 tracking-[0.35em] uppercase font-semibold">
               Daily birthday project{" "}
@@ -376,5 +413,134 @@ export default function Home() {
         </div>
       </div>
     </div>
+  );
+}
+
+function InputForm({
+  initialName,
+  initialDate,
+}: {
+  initialName?: string;
+  initialDate?: string;
+}) {
+  const [name, setName] = useState(initialName || "");
+  const [date, setDate] = useState(initialDate || "0217");
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const n = name.trim() || "친구";
+    const d = date.replace(/\D/g, "").padStart(4, "0").slice(0, 4) || "0217";
+    const params = new URLSearchParams({ name: n, date: d });
+    window.location.href = `/?${params.toString()}`;
+  };
+
+  return (
+    <div className="min-h-screen flex flex-col items-center justify-center px-6 bg-gradient-to-b from-indigo-950/95 via-purple-950/90 to-violet-950/95 text-white font-sans">
+      <div className="max-w-md w-full space-y-8">
+        <div className="text-center">
+          <h1
+            className="font-serif text-2xl md:text-3xl font-medium italic mb-2"
+            style={{ color: "rgba(255,255,255,0.95)" }}
+          >
+            생일 카드 만들기
+          </h1>
+          <p
+            className="text-sm"
+            style={{ color: "rgba(255,255,255,0.75)" }}
+          >
+            이름과 생일을 입력하면 맞춤 생일 카드가 만들어져요.
+          </p>
+        </div>
+
+        <form
+          onSubmit={handleSubmit}
+          className="flex flex-col gap-4"
+        >
+          <div>
+            <label
+              htmlFor="name"
+              className="block text-xs font-medium mb-1.5 uppercase tracking-wider"
+              style={{ color: "rgba(255,255,255,0.6)" }}
+            >
+              이름
+            </label>
+            <input
+              id="name"
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="친구"
+              className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-white/40"
+              autoComplete="off"
+            />
+          </div>
+
+          <div>
+            <label
+              htmlFor="date"
+              className="block text-xs font-medium mb-1.5 uppercase tracking-wider"
+              style={{ color: "rgba(255,255,255,0.6)" }}
+            >
+              생일 (MMDD)
+            </label>
+            <input
+              id="date"
+              type="text"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+              placeholder="0217"
+              maxLength={4}
+              className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-white/40"
+              autoComplete="off"
+            />
+            <p
+              className="mt-1 text-[11px]"
+              style={{ color: "rgba(255,255,255,0.5)" }}
+            >
+              예: 0217 (2월 17일), 0209 (2월 9일)
+            </p>
+          </div>
+
+          <button
+            type="submit"
+            className="w-full py-4 px-6 rounded-2xl bg-white/15 border border-white/30 text-white font-semibold hover:bg-white/25 active:scale-[0.98] transition-all"
+          >
+            카드 보기
+          </button>
+        </form>
+
+        <p
+          className="text-center text-[11px]"
+          style={{ color: "rgba(255,255,255,0.5)" }}
+        >
+          주소창에 직접 입력해도 돼요:{" "}
+          <code className="bg-white/10 px-1.5 py-0.5 rounded">
+            ?name=신우&date=0217
+          </code>
+        </p>
+
+        <div className="flex justify-center pt-4">
+          <div className="px-6 py-2.5 rounded-full border border-white/15 bg-white/5">
+            <p className="text-[10px] text-white/70 tracking-[0.2em] uppercase">
+              Daily birthday project @hbd_.365
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default function Home() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-indigo-950 via-purple-950 to-violet-950 text-white">
+          <p className="font-serif italic text-white/80">잠시만요...</p>
+        </div>
+      }
+    >
+      <BirthdayCardContent />
+    </Suspense>
   );
 }

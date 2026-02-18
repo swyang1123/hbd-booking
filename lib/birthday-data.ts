@@ -34,6 +34,8 @@ export type BirthdayEntry = {
 
   /** 오늘의 기념일 (예: 골든리트리버의 날) */
   anniversaryName?: string;
+  /** 기념일 메인 문구 (설날 등 격식 문구용) */
+  anniversaryMain?: string;
   anniversaryDesc?: string;
 };
 
@@ -324,6 +326,34 @@ export const birthdayDatabase: Record<string, BirthdayEntry> = {
       "통찰력과 내면의 목소리가 운세를 여는 날입니다. 고요한 관찰에 귀 기울여 보세요.",
     anniversaryName: "테디베어의 날",
     anniversaryDesc: "소중한 사람에게 따뜻한 마음을 전하는 날입니다.",
+  },
+  "02-17": {
+    title: "블루 오팔의 지적인 기운과 설날의 풍요로움이 당신의 새로운 시작을 축복합니다.",
+    event: "설날",
+    meaning: "설날의 기운과 블루 오팔의 지적 기운이 맞닿아 새로운 한 해를 여는 날입니다.",
+    colorCode: "#5DADE2",
+    vibe: 93,
+    flowerName: "야생화 (Wild Flower)",
+    flowerMeaning:
+      "친숙함이라는 꽃말처럼, 야생화는 누구에게나 거리감 없이 다가가는 포근한 매력을 상징합니다. 이름 그대로 들과 산에 스스로 피어나는 야생화는 특별한 돌봄 없이도 당신 곁에 늘 함께해 주는 든든한 존재처럼, 주변 사람들에게 편안함과 신뢰를 주는 에너지를 담고 있습니다.",
+    flowerImage: "/images/0217_flower.png",
+    birthstoneName: "블루 오팔 (Blue Opal)",
+    birthstoneDesc:
+      "호주와 에티오피아 등지에서 주로 산출되며, 물의 기운과 하늘의 청량함을 머금은 보석입니다. 학구적인 야심은 단순한 욕심이 아니라, 깊이 있는 탐구와 지적 성장에 대한 끊임없는 열망을 의미합니다. 블루 오팔의 지적·직관적 기운은 공부와 창작, 새로운 분야에 대한 도전 정신을 북돋우며 당신의 야심을 더 큰 결실로 이끌어 줍니다.",
+    birthstoneImage: "/images/0217_stone.png",
+    birthstonePreserveColor: true,
+    zodiacName: "물병자리",
+    zodiacDetail: "자유로운 영혼",
+    zodiacImage: "/images/aquarius.png",
+    fortune:
+      "오늘은 창의적인 아이디어가 샘솟는 날입니다. 설날의 기운을 받아 가족들과 즐거운 시간을 보내며 새로운 계획을 세우기에 아주 좋은 날이에요.",
+    colorNameKo: "블루 오팔",
+    energyEmoji: "✦",
+    energyDesc:
+      "당신의 야심 찬 계획들이 모두 결실을 맺는 한 해가 될 거예요.",
+    anniversaryName: "설날",
+    anniversaryMain: "오늘은 민족 대명절 설날입니다. 새해 복 많이 받으세요!",
+    anniversaryDesc: "설날의 따뜻한 기운이 당신을 감싸는 날입니다.",
   },
   "02-12": {
     title: "포용과 보호의 기운",
