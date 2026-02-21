@@ -9,7 +9,7 @@ function safeFileName(name: string): string {
   return name.replace(/[/\\:*?"<>|]/g, "_").trim() || "친구";
 }
 
-const INTRO_DURATION_MS = 2000;
+const INTRO_DURATION_MS = 3000;
 const FADE_OUT_MS = 500;
 
 function IntroOverlay({
